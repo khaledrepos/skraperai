@@ -1,0 +1,2 @@
+class PlaygroundRequest < ApplicationRecord
+end

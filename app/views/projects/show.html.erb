@@ -1,0 +1,32 @@
+<%= render partial: 'components/project_nav'%>
+
+
+
+  <p style="color: green"><%= notice %></p>
+
+  <% render @project %>
+
+
+    <table class='table table-bordered'>
+      <tr>
+        <th class='w-25'>Project Name</td>
+        <td class='fw-bold'><%=@project.name%></td>
+      </tr>
+      <tr>
+        <th>Schema</td>
+        <td class='bg-light border'>
+        <pre><code><%=@project.json_schema%></code></pre>
+        </td>
+      </tr>
+      <tr>
+        <th>Expiry</td>
+        <td><%=@project.expiry%></td>
+      </tr>
+    </table>
+
+
+  <div class='d-flex justify-content-between'>
+    <%= link_to "Edit Project", edit_project_path(@project), class: 'btn btn-primary' %>
+
+    <%= button_to "Destroy", @project, method: :delete, class: 'btn btn-link text-muted text-decoration-none' %>
+  </div>

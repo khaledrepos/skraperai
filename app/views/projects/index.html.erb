@@ -1,0 +1,28 @@
+<%if notice%>
+<p style="color: green"><%= notice %></p> 
+<%end%>
+
+<h1>Projects</h1>
+
+<div id="projects">
+
+    <table class='table'>
+      <tr>
+        <th>Name</th>
+        <th>Actions</th>
+      </tr>
+      <% @projects.each do |project| %>
+        <tr>
+          <td><%=project.name%></td>
+          <td>
+            <%= link_to "Show", project %>
+          </td>
+        </tr>
+    <% end %>
+    </table>
+
+  <%= link_to "New project", new_project_path %>
+  
+
+</div>
+

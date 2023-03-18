@@ -1,0 +1,79 @@
+
+
+<%=form_with url: simulate_playground_path do |form|%>
+
+
+<div class="row border-start border-end ">
+  
+  <!-- Title -->
+  <div class="col-12 p-2 border-bottom">
+    <h4>Playground</h4>
+  </div>
+  
+  <!-- Simulation Inputs -->
+  <div class="col-5">
+    <div class="row">
+      <div class="col-12 border-bottom p-0">
+        <div class="fw-bold border-bottom ps-2">Target URL</div>
+        <%= form.text_field :target_url, required: true, class: 'form-control border-0 rounded-0 bg-light text-black', value: @playground_request.target_url, placeholder: 'https://www.example.com' %>
+      </div>
+      
+      <div class="col-12 border-bottom p-0" style="height: 70vh">
+        <div class="fw-bold border-bottom ps-2">Json Schema</div>
+
+        <div class='border'>
+          <%= form.text_area :json_schema, value: @playground_request.json_schema, class: 'form-control', rows: '10', id: 'code-textarea' %>
+        </div>
+      </div>
+
+      <div class='col-12 p-2 border-bottom'>
+        <div class='d-grid'>
+          <button class='btn btn-primary rounded-0'> Parse </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+  <!-- Result -->
+  <div class="col-7 border-start overflow-scroll p-0" style='max-height: 87vh'>
+    
+    <div>
+      <div class="fw-bold border-bottom ps-2">Result</div>
+    </div>
+    <div>
+      <code>
+        <pre dir='auto' style='white-space: pre-wrap;'>
+          <%= JSON.pretty_generate(@clean_output_json)%>
+        </pre>
+      </code>
+    </div>
+  </div>
+
+
+</div>
+
+<%end%>
+
+
+<script>
+  var myTextarea = document.getElementById("code-textarea");
+  var myCodeMirror = CodeMirror.fromTextArea(myTextarea, {
+    mode: {
+      name: "javascript",
+      json: true,
+      statementIndent: 2
+    },
+    theme: "neat",
+    lineNumbers: true
+  });
+</script>
+
+
+
+<style>
+.CodeMirror {
+  border: 1px solid #eee;
+  height: 67vh;
+}
+</style>

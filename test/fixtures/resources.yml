@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  target_url: MyString
+  response: MyString
+  response_clean: MyString
+  response_gpt: 
+  project: one
+
+two:
+  target_url: MyString
+  response: MyString
+  response_clean: MyString
+  response_gpt: 
+  project: two
